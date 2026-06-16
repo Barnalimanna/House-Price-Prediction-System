@@ -1,1 +1,4 @@
 /venv
+__pycache__/
+prediction_history.csv
+.vscode/
