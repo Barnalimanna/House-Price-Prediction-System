@@ -4,14 +4,16 @@ import pandas as pd
 import csv
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 app = Flask(
     __name__,
-    template_folder= "../Frontend/templates",
-    static_folder= "../Frontend/static"
+    template_folder=os.path.join(BASE_DIR, "Frontend", "templates"),
+    static_folder=os.path.join(BASE_DIR, "Frontend", "static")
 )
 
-model =joblib.load("../ML/house_price_model.pkl")
-
+MODEL_PATH = os.path.join(BASE_DIR, "ML", "house_price_model.pkl")
+model = joblib.load(MODEL_PATH)
 @app.route("/")
 def home():
     return render_template("index.html",form_data=None)
