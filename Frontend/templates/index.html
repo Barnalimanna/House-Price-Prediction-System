@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <div class="header">
+        <h1> House Price Prediction System</h1>
+        <p class="tagline">
+            "Turning property features into intelligent price insights."
+        </p>
+    </div>
+
+    <div class="card">
+
+        <form action="/predict" method="POST" class="form-grid">
+
+            <div>
+                <label>Area</label>
+                <input type="number" name="area" value="{{ form_data.area if form_data else '' }}" required>
+            </div>
+
+            <div>
+                <label>Bedrooms</label>
+                <input type="number" name="bedrooms" value="{{ form_data.bedrooms if form_data else '' }}" required>
+            </div>
+
+            <div>
+                <label>Bathrooms</label>
+                <input type="number" name="bathrooms" value="{{ form_data.bathrooms if form_data else '' }}" required>
+            </div>
+
+            <div>
+                <label>Stories</label>
+                <input type="number" name="stories" value="{{ form_data.stories if form_data else '' }}" required>
+            </div>
+
+            <div>
+                <label>Main Road</label>
+                <select name="mainroad">
+                    <option value="1" {% if form_data and form_data.mainroad == "1" %}selected{% endif %}>Yes</option>
+                    <option value="0" {% if form_data and form_data.mainroad == "0" %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Guest Room</label>
+                <select name="guestroom">
+                    <option value="1" {% if form_data and form_data.guestroom == "1" %}selected{% endif %}>Yes</option>
+                    <option value="0" {% if form_data and form_data.guestroom == "0" %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Basement</label>
+                <select name="basement">
+                    <option value="1" {% if form_data and form_data.basement == "1" %}selected{% endif %}>Yes</option>
+                    <option value="0" {% if form_data and form_data.basement == "0" %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Hot Water Heating</label>
+                <select name="hotwaterheating">
+                    <option value="1" {% if form_data and form_data.hotwaterheating == "1" %}selected{% endif %}>Yes</option>
+                    <option value="0" {% if form_data and form_data.hotwaterheating == "0" %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Air Conditioning</label>
+                <select name="airconditioning">
+                    <option value="1" {% if form_data and form_data.airconditioning == "1" %}selected{% endif %}>Yes</option>
+                    <option value="0" {% if form_data and form_data.airconditioning == "0" %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Parking</label>
+                <input type="number" name="parking" value="{{ form_data.parking if form_data else '' }}" required>
+            </div>
+
+            <div>
+                <label>Preferred Area</label>
+                <select name="prefarea">
+                    <option value="1" {% if form_data and form_data.prefarea == "1" %}selected{% endif %}>Yes</option>
+                    <option value="0" {% if form_data and form_data.prefarea == "0" %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Furnishing Status</label>
+                <select name="furnishingstatus">
+                    <option value="furnished" {% if form_data and form_data.furnishingstatus == "furnished" %}selected{% endif %}>Furnished</option>
+                    <option value="semi-furnished" {% if form_data and form_data.furnishingstatus == "semi-furnished" %}selected{% endif %}>Semi Furnished</option>
+                    <option value="unfurnished" {% if form_data and form_data.furnishingstatus == "unfurnished" %}selected{% endif %}>Unfurnished</option>
+                </select>
+            </div>
+
+            <button type="submit" class="predict-btn">Predict Price</button>
+
+        </form>
+
+        {% if prediction %}
+        <div class="result-card">
+            <p>Predicted Result</p>
+            <h2>{{ prediction }}</h2>
+        </div>
+        <div style="text-align:center; margin-top:15px;">
+            <a href="/history" class="history-btn">
+                View Prediction History
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

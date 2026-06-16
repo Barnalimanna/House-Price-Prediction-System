@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="main-container">
+    <div class="header">
+        <h1>Prediction History</h1>
+        <p class="tagline">Review all previous house price predictions.</p>
+    </div>
+
+    <div class="card">
+        <div class="table-wrapper">
+        <table>
+    {% for row in records %}
+    <tr>
+        {% for col in row %}
+            {% set col_index = loop.index0 %}
+
+            {% if row != records[0] and col_index in [4, 5, 6, 7, 8, 10] %}
+                <td>{{ "Yes" if col == "1" else "No" }}</td>
+            {% else %}
+                <td>{{ col }}</td>
+            {% endif %}
+
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+        </div>
+
+        <a href="/" class="history-btn">Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>

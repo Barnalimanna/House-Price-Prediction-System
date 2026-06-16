@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+    color: #0f172a;
+}
+
+.main-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+   color: #1e3a8a;
+   font-size: 38px;
+   margin-bottom: 8px;
+}
+
+.tagline{
+    font-style: italic;
+    color: #466edf;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.15);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #334155;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.predict-btn {
+    grid-column: span 2;
+    padding: 14px;
+    background: #1e3a8a;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.predict-btn:hover {
+   background: #5375d1;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(70, 110, 223, 0.35);
+   
+}
+
+.result-card {
+    margin-top: 25px;
+    padding: 22px;
+    text-align: center;
+    background: #dcfce7;
+    border-radius: 14px;
+    border: 1px solid #86efac;
+}
+
+.result-card p {
+    margin: 0;
+    color: #166534;
+    font-weight: bold;
+}
+
+.result-card h2 {
+    color: #14532d;
+    margin-bottom: 0;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.card {
+    overflow: hidden;
+}
+
+td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: center;
+}
+
+tr:first-child {
+    background: #1e3a8a;
+    color: white;
+    font-weight: bold;
+}
+
+.history-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .predict-btn {
+        grid-column: span 1;
+    }
+}
